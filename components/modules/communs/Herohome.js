@@ -6,7 +6,11 @@ function Herohome() {
     <div className="hero min-h-screen bg-secondary text-white">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="max-w-sm rounded-lg shadow-2xl">
-          <Image src="https://placeimg.com/260/400/arch" layout="fill" />
+          <Image
+            src="https://placeimg.com/260/400/arch"
+            layout="fill"
+            alt="Soyez votre propre patron"
+          />
         </div>
 
         <div className="w-7/12 mx-auto">

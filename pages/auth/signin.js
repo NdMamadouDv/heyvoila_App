@@ -3,6 +3,7 @@ import { getCsrfToken } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
 
+/** @param {import('next').InferGetServerSidePropsType<typeof getServerSideProps> } props */
 export default function SignIn({ csrfToken }) {
   return (
     <>
@@ -17,6 +18,7 @@ export default function SignIn({ csrfToken }) {
                 layout="responsive"
                 loading="lazy"
                 className=""
+                alt="Logo heyvoila.fr"
               />
             </div>
             <h2 className="text-center font-medium text-2xl mb-4">

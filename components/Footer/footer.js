@@ -13,6 +13,7 @@ function footer() {
                 src="/HeyVoila_Logo.png"
                 loading="lazy"
                 width={400}
+                alt="Logo heyvoila.fr"
                 height={215}
               />
             </a>

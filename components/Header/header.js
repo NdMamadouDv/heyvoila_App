@@ -4,7 +4,7 @@ import Link from "next/link";
 import { APP_ROUTES } from "../../utils/constants";
 import { useSession, signIn, signOut } from "next-auth/react";
 
-function header() {
+function Header() {
   const { data: session, status } = useSession();
 
   const loading = status === "loading";
@@ -24,6 +24,7 @@ function header() {
                 layout="responsive"
                 loading="lazy"
                 className=""
+                alt="Logo heyvoila.fr"
               />
             </a>
           </Link>
@@ -179,4 +180,4 @@ function header() {
   );
 }
 
-export default header;
+export default Header;

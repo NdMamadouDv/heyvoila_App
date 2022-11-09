@@ -76,6 +76,7 @@ function ImageUpload2({
                     src={URL.createObjectURL(file)}
                     layout="fill"
                     className="z-0"
+                    alt="Votre image"
                   />
                 </div>
               );

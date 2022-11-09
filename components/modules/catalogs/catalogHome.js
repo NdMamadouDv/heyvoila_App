@@ -28,8 +28,7 @@ function catalog({ annonces }) {
                         {annonce.image?.url ? (
                           <Image
                             src={annonce.image.url}
-                            // alt={annonce.images[0].alt}
-
+                            alt="Votre image"
                             loading="lazy"
                             className="rounded-lg group-hover:opacity-75"
                           />
@@ -38,8 +37,7 @@ function catalog({ annonces }) {
                             src="/image_vendors_default.jpg"
                             width={3000}
                             height={2000}
-                            // alt={annonce.images[0].alt}
-
+                            alt="image de votre annonce"
                             loading="lazy"
                             className="rounded-lg group-hover:opacity-75"
                           />
