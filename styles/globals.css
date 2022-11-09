@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* How to add font */
+/* @font-face {
+  font-family: "ADELIA";
+  src: url("../public/fonts/ADELIA.otf");
+} */
+
+a:hover {
+  @apply bg-transparent;
+}
