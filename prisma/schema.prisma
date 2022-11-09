@@ -1,0 +1,111 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Annonce {
+  id String  @id @default(cuid())
+  titre String
+  slug String?
+  description String?
+  image String?
+  prixTache Float?
+  // prix_heure Float 
+  // prix_journee Float
+  // prix_mois Float
+  creeLe DateTime @default(now())
+  misAJourLe DateTime? @updatedAt
+  sousCategorie SousCategorie? @relation(fields: [sousCategorieId], references: [id]) 
+  sousCategorieId String? @unique
+  // Ajouter le temps d'execution
+  // auteurAnnonce Profile @relation(fields: [auteurId],references: [id])
+  // auteurId String @unique@default(cuid())
+  // todo : Tags
+  // note Note[]
+  photos PhotoAnnonce[] 
+}
+model PhotoAnnonce{
+  id Int @id @default(autoincrement())
+  height Int
+  Width Int
+  url String
+  annonce Annonce @relation(fields: [annonceId],references: [id])
+  annonceId String @unique
+  utilisateur Utilisateur @relation(fields: [utilisateurId],references: [id])
+  utilisateurId String @unique
+}
+// model PhotoUtilisateur {
+//   id Int @id @default(autoincrement())
+//   height Int
+//   Width Int
+//   url String
+//   annonce Annonce @relation(fields: [annonceId],references: [id])
+//   annonceId String @unique
+//   utilisateur Utilisateur @relation(fields: [utilisateurId],references: [id])
+//   utilisateurId String @unique
+// }
+model Note {
+  id String @id @default(cuid())
+  note Int
+  commentaire String
+  creeLe DateTime @default(now())
+  misAJourLe DateTime @updatedAt
+  // annonceNote Annonce @relation(fields: [annonceId],references: [id])
+  // auteurNote Profile @relation(fields: [profileId] , references: [id])
+  annonceId String @unique
+  profileId String @unique@default(cuid())
+}  
+model Categorie {
+  id String @id @default(cuid())
+  nom String 
+  slug String @unique
+  sousCategorie SousCategorie[]
+}
+model SousCategorie {
+  id String @id @default(cuid())
+  nom String 
+  slug String @unique
+  categorie Categorie? @relation(fields: [categorieId], references: [id])
+  categorieId String? 
+  annonce Annonce? 
+}
+
+// profil , info plus précise sur l'utilisateur
+model Profile {
+  id  String  @id @default(cuid())
+  emailUtilisateur String  @unique@default(cuid()) 
+  nomUtilisateur String
+  prenomUtilisateur String
+  photoUtilisateur String[]
+
+  creeLe DateTime @default(now())
+  misAJourLe DateTime @updatedAt
+  utilisateur  Utilisateur? @relation(fields: [utilisateurId], references: [id])
+  utilisateurId String? @unique
+}
+// utilisateur de la plateforme
+model Utilisateur {
+  id String @id @default(cuid())
+  profile Profile?
+  email String @unique
+  password String
+  photo PhotoAnnonce[]
+   // note Note[]
+  // annonce Annonce[]
+  nom String
+  prenom String
+  role Role @default(Utilisateur)
+  // @@unique([nom,prenom,email,photo])
+}
+
+enum Role {
+  Utilisateur
+  Vendeur
+  Client
+}

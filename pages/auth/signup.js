@@ -50,7 +50,9 @@ export default function SignUp() {
   return (
     <div className="w-full h-screen flex justify-center items-center bg-primary">
       <div className="w-1/2 h-3/4 shadow-lg rounded-md bg-white p-8 flex flex-col">
-        <h2 className="text-center font-medium text-2xl mb-4">S'inscrire</h2>
+        <h2 className="text-center font-medium text-2xl mb-4">
+          S&apos;inscrire
+        </h2>
         <div className="flex flex-1 flex-col justify-evenly">
           <input
             className="border-2 outline-none p-2 rounded-md"

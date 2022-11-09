@@ -5,6 +5,7 @@ import axios from "axios";
 
 const prisma = new PrismaClient();
 
+/** @param {import('next').InferGetServerSidePropsType<typeof getServerSideProps> } props */
 function create({ categories = [], sousCategories = [] }) {
   const addAnnonce = (data) => axios.post("/api/annonces/createAnnonces", data);
 
@@ -15,7 +16,7 @@ function create({ categories = [], sousCategories = [] }) {
           Ajouter une annonce
         </h1>
         <p className="text-gray-500 text-sm">
-          Vous êtes à quelques pas d'apparaître en ligne.
+          Vous êtes à quelques pas d&apos;apparaître en ligne.
         </p>
         <div className="mt-8">
           <CreateJobForm
